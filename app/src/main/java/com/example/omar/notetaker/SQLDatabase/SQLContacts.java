@@ -9,13 +9,8 @@ import com.example.omar.notetaker.DataModel.Note;
  */
 
 public final class SQLContacts {
-
-    static final String DATABASE_NAME="Note_Taker_Database";
-
     /**
      * Constructor should be a private to prevent being initiated accidentally.
-     *
-     *
      */
     private SQLContacts(){}
 
@@ -28,7 +23,6 @@ public final class SQLContacts {
         public static final String COLUMN_ID = "nId";
         public static final String COLUMN_TITLE = "nTitle";
         public static final String COLUMN_TEXT = "nText";
-        public static final String COLUMN_DATE = "nDate";
 
         // database operations
 
@@ -54,9 +48,5 @@ public final class SQLContacts {
                 + " (" + COLUMN_ID + DATA_INTEGER + PRIMARY_KEY_AUTO+", "+
                 COLUMN_TITLE + DATA_TEXT+ " , "+
                 COLUMN_TEXT + DATA_TEXT+" ) ; " ;
-
-
-
-
 
 }

@@ -1,28 +1,33 @@
 package com.example.omar.notetaker.DataModel;
-
-import java.util.Date;
-
 /**
  * Created by OMAR on 10/30/2016.
  */
 
+/**
+ * Note Java Bean. It uses to hole the attributes of Note table.
+ */
 public class Note {
-    public static final String NOTE_TABLE="note";
-    public static final String NOTE_ID="nid";
-    public static final String NOTE_TITLE="ntitle";
-    public static final String NOTE_TEXT="ntitle";
-    public static final String NOTE_DATE="ndate";
+    private long Id;
+    private String title;
+    private String text;
 
-    // constructors
+    /**
+     * Constructor without parameters.
+     */
     public Note (){
         super();
     }
+
+    /**
+     * Constructor with parameters.
+     * @param title
+     * @param text
+     */
     public Note(String title, String text) {
         this.title = title;
         this.text = text;
       //  this.date = date;
     }
-
 
     public long getId() {
         return Id;
@@ -31,11 +36,6 @@ public class Note {
     public void setId(long id) {
         Id = id;
     }
-
-    long Id;
-    String title;
-    String text;
-    Date date;
 
     public String getTitle() {
         return title;
@@ -53,11 +53,4 @@ public class Note {
         this.text = text;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
 }

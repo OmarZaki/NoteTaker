@@ -19,24 +19,29 @@ import com.example.omar.notetaker.SQLDatabase.NotesDataSource;
 
 import java.util.List;
 
-
 /**
  * Created by OMAR on 11/5/2016.
  */
 
+/**
+ * ViewList Custom Adapter.
+ */
 public class CustomListAllAdapter extends ArrayAdapter {
     Context context;
     List<Note> allNotes;
     public final int  EDIT = 1;
     public final int  READ = 0;
+
+    /**
+     * Constructor.
+     * @param context
+     * @param notes
+     */
     public CustomListAllAdapter(Activity context, List<Note> notes) {
         super(context,R.layout.custom_list_all_notes, notes);
         this.allNotes= notes;
         this.context=context;
     }
-
-
-
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
@@ -82,6 +87,12 @@ public class CustomListAllAdapter extends ArrayAdapter {
         });
         return viewRow;
     }
+
+    /**
+     * Open dialog View
+     * @param note
+     * @param Op
+     */
     private void openEditDialog(final Note note, int Op){
         final NotesDataSource dbSource= new NotesDataSource(context);
         dbSource.open();

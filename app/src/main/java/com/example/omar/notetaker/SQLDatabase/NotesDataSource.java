@@ -5,9 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-
 import com.example.omar.notetaker.DataModel.Note;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +13,9 @@ import java.util.List;
  * Created by OMAR on 11/11/2016.
  */
 
+/**
+ * The Data Source class that is used to open , close and execute the SQL operations.
+ */
 public class NotesDataSource {
 
     // database fields
@@ -22,23 +23,35 @@ public class NotesDataSource {
     private SQLNotesHelper dbHelper;
     private String[] allColumns = {SQLContacts.COLUMN_ID, SQLContacts.COLUMN_TITLE,SQLContacts.COLUMN_TEXT};
 
-    // constructor
-
+    /**
+     * Constructor
+     * @param context
+     */
     public NotesDataSource(Context context) {
         dbHelper= new SQLNotesHelper(context);
-
     }
-    // Open Database connection
+
+    /**
+     * Open Database connection;
+     * @throws SQLException
+     */
     public void open() throws SQLException{
         db=dbHelper.getWritableDatabase();
-
     }
-    // Close the database connection
+
+    /**
+     * Close database connection.
+     */
     public void close(){
         dbHelper.close();
     }
 
-    // add new note
+    /**
+     * Add new Note to the database.
+     * @param title
+     * @param text
+     * @return
+     */
     public Note addNewNote(String title, String text){
         ContentValues contentValues = new ContentValues();
         contentValues.put(SQLContacts.COLUMN_TITLE, title);
@@ -54,7 +67,11 @@ public class NotesDataSource {
         return note;
 
     }
-    // get all the list of Notes
+
+    /**
+     * Get ArrayList of all Notes in the database.
+     * @return
+     */
     public List<Note> getAllNotes(){
         List<Note> listOfAllNotes= new ArrayList<Note>();
 
@@ -70,11 +87,21 @@ public class NotesDataSource {
 
     }
 
-    // remove note by id
+    /**
+     * Delete a specific Note from Database.
+     * @param note
+     * @return
+     */
     public long removeNoteById(Note note){
         long deletedNote= db.delete(SQLContacts.TABLE_NAME,SQLContacts.COLUMN_ID+SQLContacts.EQUAL+"?",new String[]{String.valueOf(note.getId())});
         return deletedNote;
     }
+
+    /**
+     * Get specific Note from database.
+     * @param note
+     * @return
+     */
     public Note getNoteById(Note note){
         String noteId = String.valueOf(note.getId());
         Cursor cursor = db.query(SQLContacts.TABLE_NAME,
@@ -87,6 +114,11 @@ public class NotesDataSource {
         return note;
     }
 
+    /**
+     * update specific Note row from the databse.
+     * @param note
+     * @return
+     */
     public long updateNoteById(Note note){
         String noteId = String.valueOf(note.getId());
         String[] Columns = {SQLContacts.COLUMN_TITLE,SQLContacts.COLUMN_TEXT};

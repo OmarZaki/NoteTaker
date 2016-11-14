@@ -8,11 +8,13 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by OMAR on 11/9/2016.
  */
 
+/**
+ * SQL helper used to create The database and update database version;
+ */
 public class SQLNotesHelper extends SQLiteOpenHelper {
     // The database v, if you change the database model , you need to update the database .
     public static final int  DATABASE_VERSION= 1;
-    public static final String DATABASE_NAME="notetaker.db";
-
+    public static final String DATABASE_NAME="notetaker.db"; // database file name.
     /**
      * Constructor of the SQLHelper
      * @param context

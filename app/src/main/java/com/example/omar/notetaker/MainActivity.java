@@ -21,14 +21,14 @@ import com.example.omar.notetaker.SQLDatabase.NotesDataSource;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements AddNoteFragment.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity  {
     /**
      * User Interface Elements Declarations
      */
     Toolbar appToolbar ;
     ListView lvAllNotesList;
-    String [] testNotesTitleList = {"Note 1", "Note 2", "Note 3" , "Note 4"} ;
-    String [] testNotesDateList = {"date 1", "date 2", "date 3","date 4" } ;
+//    String [] testNotesTitleList = {"Note 1", "Note 2", "Note 3" , "Note 4"} ;
+//    String [] testNotesDateList = {"date 1", "date 2", "date 3","date 4" } ;
 
     List<Note> allNotes= new ArrayList<Note>();
 
@@ -66,6 +66,10 @@ public class MainActivity extends AppCompatActivity implements AddNoteFragment.O
         lvAllNotesList.setAdapter(customListAllAdapter);
 
     }
+
+    /**
+     * Setup the Toolbar.
+     */
     private void setupToolbar() {
 
         appToolbar=(Toolbar)findViewById(R.id.appToolbar);
@@ -78,7 +82,10 @@ public class MainActivity extends AppCompatActivity implements AddNoteFragment.O
 
     }
 
-
+    /**
+     * Event handler..
+     * @param view
+     */
     public void onClickFloatingButton(View view) {
 
         final Dialog dialog = new Dialog(this);
@@ -119,11 +126,6 @@ public class MainActivity extends AppCompatActivity implements AddNoteFragment.O
             }
         });
         dialog.show();
-    }
-
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
     }
 
     @Override
